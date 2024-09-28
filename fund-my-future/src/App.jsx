@@ -5,6 +5,8 @@ import LoginPage from './pages/LoginPage';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Dashboard from './pages/Dashboard';
+import StudentDashboard from './components/dashboard/StudentDashboard';
+import SponsorDashboard from './components/dashboard/SponsorDashboard';
 
 const App = () => {
   return (
@@ -22,6 +24,8 @@ const App = () => {
               </ProtectedRoute>
             }
           />
+          <Route path="/student" element={<StudentDashboard />} />
+          <Route path="/sponsor" element={<SponsorDashboard />} />
         </Routes>
       </Router>
     </AuthProvider>
