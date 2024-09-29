@@ -2,7 +2,7 @@
 
 from flask import Blueprint, request, jsonify
 from app import db
-from app.models import User
+from app.models import User, Application, Contribution
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
 main_bp = Blueprint('auth', __name__)
@@ -38,7 +38,8 @@ def login():
     user = User.query.filter_by(email=email).first()
     
     if user and user.check_password(password):
-        access_token = create_access_token(identity={"email": user.email, "role": user.role})
+        # Include user ID in the JWT payload
+        access_token = create_access_token(identity={"id": user.id, "email": user.email, "role": user.role})
         return jsonify({"access_token": access_token}), 200
     else:
         return jsonify({"error": "Invalid credentials"}), 401
@@ -48,3 +49,55 @@ def login():
 def protected():
     current_user = get_jwt_identity()
     return jsonify(logged_in_as=current_user), 200
+
+# Student submits an application
+@main_bp.route('/student/application', methods=['POST'])
+@jwt_required()
+def create_application():
+    current_user = get_jwt_identity()
+    student_id = current_user['id']  # Now JWT contains the 'id' field
+
+    # Get application data
+    data = request.get_json()
+    amount = data.get('amount')
+    reason = data.get('reason')
+
+    # Create a new application for the student
+    application = Application(student_id=student_id, amount=amount, reason=reason)
+
+    db.session.add(application)
+    db.session.commit()
+
+    return jsonify({"message": "Application submitted successfully"}), 201
+
+
+# Sponsor views applications to contribute
+@main_bp.route('/sponsor/applications', methods=['GET'])
+@jwt_required()
+def get_applications():
+    applications = Application.query.all()
+    result = [
+        {
+            "id": app.id,
+            "student_name": app.student.fullName,
+            "amount": app.amount,
+            "reason": app.reason,
+            "date_submitted": app.date_submitted
+        }
+        for app in applications
+    ]
+    return jsonify(result), 200
+
+# Sponsor makes a contribution
+@main_bp.route('/sponsor/contribute/<int:application_id>', methods=['POST'])
+@jwt_required()
+def contribute(application_id):
+    data = request.get_json()
+    sponsor_id = get_jwt_identity()['id']
+    amount = data['amount']
+    
+    contribution = Contribution(sponsor_id=sponsor_id, application_id=application_id, amount=amount)
+    db.session.add(contribution)
+    db.session.commit()
+    
+    return jsonify({"message": "Contribution successful"}), 201
