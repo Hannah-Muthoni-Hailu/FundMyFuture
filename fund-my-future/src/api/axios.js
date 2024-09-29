@@ -1,15 +1,26 @@
-import axios from 'axios';
+import axios from "axios";
 
-const api = axios.create({
-  baseURL: 'http://127.0.0.1:5000',
+// Create an instance of axios
+const axiosInstance = axios.create({
+  baseURL: "http://localhost:5000", // Change this to your backend URL
+  timeout: 5000,
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
-export const setAuthToken = (token) => {
-  if (token) {
-    api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-  } else {
-    delete api.defaults.headers.common['Authorization'];
+// Interceptor to add JWT token to the header
+axiosInstance.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("access_token"); // Get JWT token from localStorage
+    if (token) {
+      config.headers["Authorization"] = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
   }
-};
+);
 
-export default api;
+export default axiosInstance;

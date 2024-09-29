@@ -42,7 +42,7 @@ const SponsorDashboard = () => {
 
           <ProfileCard profile={profile} />
           <NotificationList notifications={notifications} />.
-          <ApplicationList applications={applications} />
+          <ApplicationList  />
 
           {/* {selectedApplication && (
             <ApplicationDetail application={selectedApplication} />

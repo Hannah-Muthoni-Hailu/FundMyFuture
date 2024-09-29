@@ -14,10 +14,6 @@ const notifications = [
   { message: "New funding opportunity available!" }
 ];
 
-const applications = [
-  { studentName: "John Doe", amount: 2000, reason: "College fees" },
-  { studentName: "Jane Smith", amount: 1500, reason: "Study material" }
-];
 
 const profile = {
   username: 'JohnDoe',
@@ -35,7 +31,7 @@ const StudentDashboard = () => {
           <ProfileCard profile={profile} />
           <NotificationList notifications={notifications} />
           <ApplicationForm />
-          <ApplicationList applications={applications} />
+          <ApplicationList />
           <ContributionsChart />
           <FundingChart />
         </div>

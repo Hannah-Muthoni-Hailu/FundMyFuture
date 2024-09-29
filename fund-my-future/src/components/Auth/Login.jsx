@@ -1,28 +1,30 @@
 import { useState } from 'react';
-import api, { setAuthToken } from '../../api/axios';
+import axiosInstance from '../../api/axios';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await api.post('/login', { email, password });
-      const { access_token } = response.data;
-      setAuthToken(access_token);
-      navigate('/');
-    } catch (error) {
-      console.error(error.response.data);
-      alert('Login failed.');
-    }
-  };
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axiosInstance.post('/login', { email, password });
+            const { access_token } = response.data;
+            localStorage.setItem('access_token', access_token); // Store JWT token
+            navigate('/');
+            alert("Logged in successfully!");
+            console.log("Access token saved to localStorage.");
+        } catch (error) {
+            console.error(error.response.data);
+            alert('Login failed!');
+        }
+    };
 
-  return (
-    <div className="max-w-md mx-auto bg-white p-8 shadow-lg rounded-lg">
+    return (
+        <div className="max-w-md mx-auto bg-white p-8 shadow-lg rounded-lg">
             <h2 className="text-2xl font-bold mb-6 text-center">Login to Your Account</h2>
             <form onSubmit={handleLogin}>
                 <div className="mb-4">
@@ -61,7 +63,7 @@ const Login = () => {
                 </p>
             </form>
         </div>
-  );
+    );
 };
 
 export default Login;

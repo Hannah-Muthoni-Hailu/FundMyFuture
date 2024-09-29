@@ -1,16 +1,17 @@
 /* eslint-disable react/prop-types */
-import { useContext } from 'react';
-import { Navigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import { Route, Navigate } from 'react-router-dom';
 
-const ProtectedRoute = ({ children }) => {
-  const { auth } = useContext(AuthContext);
+const ProtectedRoute = ({ component: Component, ...rest }) => {
+  const isAuthenticated = !!localStorage.getItem('access_token'); // Check if token exists
 
-  if (!auth.token) {
-    return <Navigate to="/login" replace />;
-  }
-
-  return children;
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        isAuthenticated ? <Component {...props} /> : <Navigate to="/login" />
+      }
+    />
+  );
 };
 
 export default ProtectedRoute;

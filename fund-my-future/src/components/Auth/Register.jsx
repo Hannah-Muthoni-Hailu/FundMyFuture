@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import api from '../../api/axios';
+import axiosInstance from '../../api/axios';
 import { Link } from 'react-router-dom';
 
 const Register = () => {
@@ -12,7 +12,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post('/register', { fullName, email, password, role });
+      const response = await axiosInstance.post('/register', { fullName, email, password, role });
       console.log(response.data);
       alert('User registered successfully!');
     } catch (error) {
