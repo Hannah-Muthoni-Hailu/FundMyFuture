@@ -14,8 +14,8 @@ const Login = () => {
             const response = await axiosInstance.post('/login', { email, password });
             const { access_token } = response.data;
             localStorage.setItem('access_token', access_token); // Store JWT token
-            navigate('/');
-            alert("Logged in successfully!");
+            navigate('/student');
+            // alert("Logged in successfully!");
             console.log("Access token saved to localStorage.");
         } catch (error) {
             console.error(error.response.data);

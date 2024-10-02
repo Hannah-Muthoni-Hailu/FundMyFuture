@@ -1,11 +1,11 @@
 // src/pages/Dashboard.jsx
-import Header from '../components/Header';
-import DashboardContent from '../components/DashboardContent';
-import Footer from '../components/Footer';
+import Header from '../components/landing/Header';
+import DashboardContent from '../components/DashBoardContent';
+import Footer from '../components/landing/Footer';
 
 const Dashboard = () => {
-  // This should be determined based on the logged-in user's data
-  const userType = 'student'; // or 'sponsor'
+  
+  const userType = 'sponsor'; 
 
   return (
     <>

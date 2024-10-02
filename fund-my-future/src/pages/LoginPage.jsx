@@ -1,6 +1,6 @@
-import Header from '../components/Header';
+import Header from '../components/landing/Header';
 import Login from '../components/Auth/Login';
-import Footer from '../components/Footer';
+import Footer from '../components/landing/Footer';
 
 const LoginPage = () => {
   return (

@@ -1,12 +1,12 @@
-import Header from '../components/Header';
-import HeroSection from '../components/Hero';
-import Features from '../components/Features';
-import Testimonials from '../components/Testimonials';
-import HowItWorks from '../components/HowItWorks';
-import Partners from '../components/Partners';
-import FAQ from '../components/Faq';
-import NewsletterSignup from '../components/NewsLetterSignup';
-import Footer from '../components/Footer'
+import Header from '../components/landing/Header';
+import HeroSection from '../components/landing/Hero';
+import Features from '../components/landing/Features';
+import Testimonials from '../components/landing/Testimonials';
+import HowItWorks from '../components/landing/HowItWorks';
+import Partners from '../components/landing/Partners';
+import FAQ from '../components/landing/Faq';
+import NewsletterSignup from '../components/landing/NewsLetterSignup';
+import Footer from '../components/landing/Footer'
 
 const LandingPage = () => {
   return (
@@ -311,7 +311,7 @@ export default LandingPage;
 
 
 // import React from 'react';
-// import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+// import { Card, CardContent, CardHeader, CardTitle } from '@/components/landing/ui/card';
 // import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 // import { DollarSign, BookOpen, Calendar, FileText, Bell, User, LogOut } from 'lucide-react';
 

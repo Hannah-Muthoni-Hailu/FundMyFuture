@@ -1,6 +1,6 @@
-import Header from '../components/Header.jsx';
+import Header from '../components/landing/Header.jsx';
 import Register from '../components/Auth/Register.jsx';
-import Footer from '../components/Footer.jsx';
+import Footer from '../components/landing/Footer.jsx';
 
 const Registration = () => {
   return (

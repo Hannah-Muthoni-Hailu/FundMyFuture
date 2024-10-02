@@ -1,4 +1,3 @@
-// src/components/HowItWorks.jsx
 
 const steps = [
   {

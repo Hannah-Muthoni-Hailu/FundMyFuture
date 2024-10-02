@@ -17,8 +17,8 @@ const ApplicationList = () => {
             }
         };
 
-        fetchApplications();
-    }, []);
+      fetchApplications();
+  }, []);
 
 
     return (

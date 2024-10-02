@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-// src/components/DashboardContent.jsx
 
 const DashboardContent = ({ userType }) => {
     return (

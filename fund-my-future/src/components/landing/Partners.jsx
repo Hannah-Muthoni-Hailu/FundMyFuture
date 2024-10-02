@@ -9,6 +9,18 @@ const partners = [
     name: 'Partner 2',
     logo: 'https://via.placeholder.com/150',
   },
+  {
+    name: 'Partner 3',
+    logo: 'https://via.placeholder.com/150',
+  },
+  {
+    name: 'Partner 4',
+    logo: 'https://via.placeholder.com/150',
+  },
+  {
+    name: 'Partner 5',
+    logo: 'https://via.placeholder.com/150',
+  }
 ];
 
 const Partners = () => {
@@ -22,7 +34,7 @@ const Partners = () => {
               <img
                 src={partner.logo}
                 alt={partner.name}
-                className="h-16 mx-auto"
+                className="h-16 mx-auto rounded-full"
               />
             </div>
           ))}

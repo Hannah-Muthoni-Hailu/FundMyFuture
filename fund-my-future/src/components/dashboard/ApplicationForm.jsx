@@ -20,7 +20,7 @@ const ApplicationForm = () => {
     try {
       // Send the application data to the backend
       const response = await axiosInstance.post('/student/applications', formData);
-      
+
       // Handle success
       setSuccessMessage('Application submitted successfully!');
       console.log('Response:', response.data);
@@ -47,7 +47,7 @@ const ApplicationForm = () => {
   return (
     <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded-lg p-4">
       <h2 className="text-xl font-semibold mb-4">Apply for Funding</h2>
-      
+
       {/* Success and error messages */}
       {successMessage && <p className="text-green-500 mb-4">{successMessage}</p>}
       {error && <p className="text-red-500 mb-4">{error}</p>}
