@@ -48,7 +48,7 @@ React.js 18.3.1
 
 4. Start the Project in Development Server
 
-   You can start Next.js in development mode using the command:
+   You can start React.js in development mode using the command:
 
    ```bash
 
