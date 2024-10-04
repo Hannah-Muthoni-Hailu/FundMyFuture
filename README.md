@@ -17,6 +17,8 @@ React.js 18.3.1
    - Node.js 18.17 or later.: You can download it from [the official Node.js website](https://nodejs.org/en).
    - An IDE: You can use any IDE of your choice like [Visual Studio](https://visualstudio.microsoft.com/), [Visual Studio Code](https://code.visualstudio.com/) or [JetBrains Rider](https://www.jetbrains.com/rider/).
 
+**Note:** *You can also fork the repository if you need to make changes on your end and contribute to the project (by pulling request).*
+
 2. Clone the repository
    You can clone the repository using the command:
 
