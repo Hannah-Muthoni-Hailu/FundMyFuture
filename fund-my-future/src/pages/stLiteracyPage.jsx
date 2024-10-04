@@ -1,5 +1,6 @@
 
 // components - student
+import Content from "../components/dashboard/student/literacy/Content";
 import SideBar from "../components/dashboard/student/literacy/SideBar";
 
 const StLiteracy = () => {
@@ -10,7 +11,7 @@ const StLiteracy = () => {
                 <SideBar />
             </section>
             <main className="flex-1 p-8">
-                
+                <Content />
             </main>
         </div>
     );

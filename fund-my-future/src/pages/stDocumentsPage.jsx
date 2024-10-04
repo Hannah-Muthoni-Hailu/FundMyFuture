@@ -1,5 +1,6 @@
 
 // components - student
+import Content from "../components/dashboard/student/docs/Content";
 import SideBar from "../components/dashboard/student/docs/SideBar";
 
 const StDocuments = () => {
@@ -10,7 +11,7 @@ const StDocuments = () => {
                 <SideBar />
             </section>
             <main className="flex-1 p-8">
-                
+                <Content />
             </main>
         </div>
     );

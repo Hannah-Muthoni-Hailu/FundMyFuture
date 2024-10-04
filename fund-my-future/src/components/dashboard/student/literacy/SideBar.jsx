@@ -16,7 +16,7 @@ const SideBar = () => {
             </div>
 
             <nav className="mt-6 fixed w-64 top-16">
-                <Link to="/sponsor/overview" className="flex items-center py-2 px-4 text-white hover:bg-indigo-100 hover:text-indigo-500 ">
+                <Link to="/student/overview" className="flex items-center py-2 px-4 text-white hover:bg-indigo-100 hover:text-indigo-500 ">
                     <EllipsisVertical className="w-5 h-5 mr-3" />
                     Overview
                 </Link>
@@ -26,17 +26,17 @@ const SideBar = () => {
                     Apply Funding
                 </Link>
                 
-                <Link to="/student/progress" className="flex items-center py-2 px-4 text-white hover:bg-indigo-100 hover:text-indigo-500 ">
+                <Link to="/student/funding" className="flex items-center py-2 px-4 text-white hover:bg-indigo-100 hover:text-indigo-500 ">
                     <TrendingUp className="w-5 h-5 mr-3" />
                     Funding Progress
                 </Link>
 
-                <Link to="/student/status" className="flex items-center py-2 px-4 text-white hover:bg-indigo-100 hover:text-indigo-500 ">
+                <Link to="/student/repayment" className="flex items-center py-2 px-4 text-white hover:bg-indigo-100 hover:text-indigo-500 ">
                     <FileText className="w-5 h-5 mr-3" />
                     Repayment Status
                 </Link>
                 
-                <Link to="/student/tools" className="flex items-center py-2 px-4 text-indigo-700 
+                <Link to="/student/learn" className="flex items-center py-2 px-4 text-indigo-700 
                 bg-indigo-200 hover:bg-indigo-100 ">
                     <BookOpen className="w-5 h-5 mr-3" />
                     Financial Literacy
@@ -47,22 +47,22 @@ const SideBar = () => {
                     Profile
                 </Link>
 
-                <Link to="/student/tools" className="flex items-center py-2 px-4 text-white hover:bg-indigo-100 hover:text-indigo-500 ">
+                <Link to="/student/docs" className="flex items-center py-2 px-4 text-white hover:bg-indigo-100 hover:text-indigo-500 ">
                     <Folder className="w-5 h-5 mr-3" />
                     Documents
                 </Link>
 
-                <Link to="/student/tools" className="flex items-center py-2 px-4 text-white hover:bg-indigo-100 hover:text-indigo-500 ">
+                <Link to="/student/support" className="flex items-center py-2 px-4 text-white hover:bg-indigo-100 hover:text-indigo-500 ">
                     <HelpCircle className="w-5 h-5 mr-3" />
                     Support
                 </Link>
 
-                <Link to="/student/tools" className="flex items-center py-2 px-4 text-white hover:bg-indigo-100 hover:text-indigo-500 ">
+                <Link to="/student/notifications" className="flex items-center py-2 px-4 text-white hover:bg-indigo-100 hover:text-indigo-500 ">
                     <Bell className="w-5 h-5 mr-3" />
                     Notifications
                 </Link>
 
-                <Link to="/student/tools" className="flex items-center py-2 px-4 text-white hover:bg-indigo-100 hover:text-indigo-500 ">
+                <Link to="/student/settings" className="flex items-center py-2 px-4 text-white hover:bg-indigo-100 hover:text-indigo-500 ">
                     <Settings className="w-5 h-5 mr-3" />
                     Settings
                 </Link>

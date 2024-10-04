@@ -1,5 +1,6 @@
 
 // components - student
+import Content from "../components/dashboard/student/settings/Content";
 import SideBar from "../components/dashboard/student/settings/SideBar";
 
 const StSettings = () => {
@@ -10,7 +11,7 @@ const StSettings = () => {
                 <SideBar />
             </section>
             <main className="flex-1 p-8">
-                
+                <Content />
             </main>
         </div>
     );

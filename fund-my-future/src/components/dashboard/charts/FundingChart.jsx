@@ -8,7 +8,7 @@ const data = [
 
 const FundingChart = () => {
   return (
-    <div className="chart-container">
+    <div className="bg-white shadow-lg rounded-lg p-4">
       <h2 className="text-xl font-semibold mb-4">Funding Progress</h2>
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={data}>
@@ -16,7 +16,7 @@ const FundingChart = () => {
           <XAxis dataKey="month" />
           <YAxis />
           <Tooltip />
-          <Line type="monotone" dataKey="amount" stroke="#8884d8" />
+          <Line type="monotone" dataKey="amount" stroke="#571454" />
         </LineChart>
       </ResponsiveContainer>
     </div>
