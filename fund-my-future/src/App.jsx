@@ -5,7 +5,6 @@ import Registration from './pages/RegistrationPage';
 import LoginPage from './pages/LoginPage';
 import { AuthProvider } from './context/AuthContext';
 // import ProtectedRoute from './components/ProtectedRoute';
-// import Dashboard from './pages/Dashboard';
 
 // Pages - student
 import StOverview from './pages/StOverviewPage';
@@ -18,6 +17,14 @@ import StDocuments from './pages/stDocumentsPage';
 import StNotification from './pages/stNotificationPage';
 import StSupport from './pages/stSupportPage';
 import StSettings from './pages/stSettingsPage';
+
+// Pages - sponsor
+import SpOverview from './pages/spOverviewPage';
+import SpApplications from './pages/spApplicationsPage';
+import SpMessages from './pages/spMessagesPage';
+import SpProfile from './pages/spProfilePage';
+import SpSettings from './pages/spSettingsPage';
+import SpReports from './pages/spReportsPage';
 
 const App = () => {
     return (
@@ -51,10 +58,12 @@ const App = () => {
                     </Route>
                     {/* Sponsor Dashboard */}
                     <Route path="sponsor">
-                        <Route path="overview" />
-                        <Route path="applications" />
-                        <Route path="contributions" />
-                        <Route path="profile" />
+                        <Route path="overview" element={<SpOverview />} />
+                        <Route path="applications" element={<SpApplications />} />
+                        <Route path="messages" element={<SpMessages />} />
+                        <Route path="profile" element={<SpProfile />} />
+                        <Route path="settings" element={<SpSettings />} />
+                        <Route path="reports" element={<SpReports />} />
                     </Route>
                 </Routes>
             </Router>

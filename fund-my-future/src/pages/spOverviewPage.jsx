@@ -1,28 +1,16 @@
 
-import Header from '../student/overview/Header';
-import SideBar from './SideBar';
-import NotificationList from '../student/notifications/NotificationList';
-
-
-const notifications = [
-    { message: "A new student application is available!" },
-    { message: "You contributed to an application!" }
-];
-
-// const applications = [
-//   { studentName: "John Doe", amount: 2000, reason: "College fees", dateSubmitted: "2024-09-27" },
-//   { studentName: "Jane Smith", amount: 1500, reason: "Study material", dateSubmitted: "2024-09-26" }
-// ];
+// components - sponsor
+import Content from "../components/dashboard/sponsor/overview/Content";
+import Header from "../components/dashboard/sponsor/overview/Header";
+import SideBar from "../components/dashboard/sponsor/overview/SideBar";
 
 const profile = {
-    username: 'Sponsor123',
+    username: 'Sarah',
     email: 'sponsor@example.com',
     profilePicture: 'https://via.placeholder.com/150'
 };
 
-const Overview = () => {
-
-
+const SpOverview = () => {
     return (
         <div className="flex">
             {/* Sidebar */}
@@ -31,6 +19,7 @@ const Overview = () => {
             </section>
             <main className="flex-1 p-8">
                 <Header profile={profile} />
+                <h1 className="text-3xl font-bold text-gray-800 my-6">Welcome back, {profile.username}!</h1>
                 <div className="p-4 space-y-6">
                     <div className='bg-white shadow-md p-4 rounded'>
                         <p className="mb-4">Here you can:</p>
@@ -40,11 +29,11 @@ const Overview = () => {
                             <li>Communicate with sponsored students.</li>
                         </ul>
                     </div>
-                    <NotificationList notifications={notifications} />
+                    <Content />
                 </div>
             </main>
         </div>
     );
 };
 
-export default Overview;
+export default SpOverview;
