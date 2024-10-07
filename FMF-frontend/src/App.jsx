@@ -6,7 +6,7 @@ import LoginPage from './pages/LoginPage';
 import { AuthProvider } from './context/AuthContext';
 
 // Pages - student
-import StOverview from './pages/StOverviewPage';
+import StOverview from './pages/stOverviewPage';
 import StApplication from './pages/stApplicationPage';
 import StFunding from './pages/stFundingPage';
 import StRepayment from './pages/stRepaymentPage';
