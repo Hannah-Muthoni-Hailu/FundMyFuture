@@ -4,4 +4,17 @@ Flask-Migrate # For database migrations
 Flask-JWT-Extended # For handling JWT authentication.
 Flask-Bcrypt # For hashing passwords.
 Flask-Cors # To handle CORS (Cross-Origin Resource Sharing) issues.
-gunicorn # For handling gunicorn authentication issues.
+
+
+# handling deployment errors.
+blinker==1.8.2
+click==8.1.7
+colorama==0.4.6
+greenlet==3.1.0
+gunicorn==23.0.0
+itsdangerous==2.2.0
+Jinja2==3.1.4
+MarkupSafe==2.1.5
+packaging==24.1
+typing_extensions==4.12.2
+Werkzeug==3.0.4
