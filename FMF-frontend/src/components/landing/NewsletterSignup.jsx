@@ -1,4 +1,4 @@
-// src/components/NewsletterSignup.jsx
+
 
 const NewsletterSignup = () => {
   return (
