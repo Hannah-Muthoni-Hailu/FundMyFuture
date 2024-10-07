@@ -12,7 +12,7 @@ const faqs = [
   },
 ];
 
-const FAQ = () => {
+const Faq = () => {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const handleToggle = (index) => {
@@ -43,4 +43,4 @@ const FAQ = () => {
   );
 };
 
-export default FAQ;
+export default Faq;
