@@ -74,7 +74,9 @@ const SideBar = () => {
             <div className="absolute bottom-0 p-4">
                 <button className="flex items-center text-white fixed bottom-4">
                     <LogOut className="w-5 h-5 mr-2" />
-                    Logout
+                    <Link to="/login">
+                        Logout
+                    </Link>
                 </button>
             </div>
         </div>

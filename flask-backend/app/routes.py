@@ -44,21 +44,23 @@ def login():
     else:
         return jsonify({"error": "Invalid credentials"}), 401
 
-@main_bp.route('/protected', methods=['GET'])
-@jwt_required()
-def protected():
-    current_user = get_jwt_identity()
-    return jsonify(logged_in_as=current_user), 200
 
 # Student submits an application
 @main_bp.route('/student/application', methods=['POST'])
 @jwt_required()
 def create_application():
     current_user = get_jwt_identity()
-    student_id = current_user['id']  # Now JWT contains the 'id' field
+    student_id = current_user['id'] 
 
     # Get application data
     data = request.get_json()
+    # firstName = data.get('firstName')
+    # lastName = data.get('lastName')
+    # email = data.get('email')
+    # phone = data.get('phone')
+    # school = data.get('school')
+    # program = data.get('program')
+    # startDate = data.get('startDate')
     amount = data.get('amount')
     reason = data.get('reason')
 
@@ -80,6 +82,11 @@ def get_applications():
         {
             "id": app.id,
             "student_name": app.student.fullName,
+            # "email": app.student.email,
+            # "phone": app.phone,
+            # "school": app.school,
+            # "program": app.program,
+            # "startDate": app.startDate,
             "amount": app.amount,
             "reason": app.reason,
             "date_submitted": app.date_submitted

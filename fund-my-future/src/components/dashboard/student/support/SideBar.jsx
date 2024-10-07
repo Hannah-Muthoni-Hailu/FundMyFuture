@@ -25,7 +25,7 @@ const SideBar = () => {
                     <DollarSign className="w-5 h-5 mr-3" />
                     Apply Funding
                 </Link>
-                
+
                 <Link to="/student/funding" className="flex items-center py-2 px-4 text-white hover:bg-indigo-100 hover:text-indigo-500 ">
                     <TrendingUp className="w-5 h-5 mr-3" />
                     Funding Progress
@@ -35,7 +35,7 @@ const SideBar = () => {
                     <FileText className="w-5 h-5 mr-3" />
                     Repayment Status
                 </Link>
-                
+
                 <Link to="/student/learn" className="flex items-center py-2 px-4 text-white hover:bg-indigo-100 hover:text-indigo-500 ">
                     <BookOpen className="w-5 h-5 mr-3" />
                     Financial Literacy
@@ -66,15 +66,17 @@ const SideBar = () => {
                     <Settings className="w-5 h-5 mr-3" />
                     Settings
                 </Link>
-                
-                
+
+
 
             </nav>
 
             <div className="absolute bottom-0 p-4">
                 <button className="flex items-center text-white fixed bottom-4">
                     <LogOut className="w-5 h-5 mr-2" />
-                    Logout
+                    <Link to="/login">
+                        Logout
+                    </Link>
                 </button>
             </div>
         </div>

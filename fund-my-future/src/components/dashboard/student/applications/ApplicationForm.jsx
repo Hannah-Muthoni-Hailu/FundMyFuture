@@ -16,13 +16,11 @@ const ApplicationForm = () => {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
-    setSuccessMessage("");
 
     try {
       // Send the application data to the backend
@@ -32,8 +30,7 @@ const ApplicationForm = () => {
       );
 
       // Handle success
-      setSuccessMessage("Application submitted successfully!");
-      alert(successMessage)
+      alert("Application submitted successfully!")
       console.log("Response:", response.data);
 
       // Reset form data

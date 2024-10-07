@@ -31,18 +31,24 @@ class User(db.Model):
 
 class Application(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    student_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  # FK to User (student)
+    student_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    # firstName = db.Column(db.String(80), unique=True, nullable=False)
+    # lastName = db.Column(db.String(80), unique=True, nullable=False)
+    # email = db.Column(db.String(120), unique=True, nullable=False)
+    # phone = db.Column(db.String(80), unique=True, nullable=False)
+    # school = db.Column(db.String(120), nullable=False)
+    # program = db.Column(db.String(120), nullable=False)
+    # startDate = db.Column(db.DateTime, default=datetime.utcnow)
     amount = db.Column(db.Float, nullable=False)
     reason = db.Column(db.String(255), nullable=False)
     date_submitted = db.Column(db.DateTime, default=datetime.utcnow)
-
     # Relationship for contributions made to this application
     contributions = db.relationship('Contribution', backref='application', lazy=True)
 
 
 class Contribution(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    sponsor_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  # FK to User (sponsor)
-    application_id = db.Column(db.Integer, db.ForeignKey('application.id'), nullable=False)  # FK to Application
+    sponsor_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  
+    application_id = db.Column(db.Integer, db.ForeignKey('application.id'), nullable=False)
     amount = db.Column(db.Float, nullable=False)
     date_contributed = db.Column(db.DateTime, default=datetime.utcnow)

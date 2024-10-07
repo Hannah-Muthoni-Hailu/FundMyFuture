@@ -4,7 +4,6 @@ import LandingPage from './pages/LandingPage';
 import Registration from './pages/RegistrationPage';
 import LoginPage from './pages/LoginPage';
 import { AuthProvider } from './context/AuthContext';
-// import ProtectedRoute from './components/ProtectedRoute';
 
 // Pages - student
 import StOverview from './pages/StOverviewPage';
@@ -35,14 +34,7 @@ const App = () => {
                     <Route path="/" element={<LandingPage />} />
                     <Route path="register" element={<Registration />} />
                     <Route path="login" element={<LoginPage />} />
-                    {/* <Route
-                        path="/dashboard"
-                        element={
-                            // <ProtectedRoute>
-                            <Dashboard />
-                            // </ProtectedRoute>
-                        }
-                    /> */}
+                    
                     {/* Student Dashboaard */}
                     <Route path="student">
                         <Route path="overview" element={<StOverview />} />
