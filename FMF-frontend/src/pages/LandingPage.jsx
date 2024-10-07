@@ -4,7 +4,7 @@ import Features from '../components/landing/Features';
 import Testimonials from '../components/landing/Testimonials';
 import HowItWorks from '../components/landing/HowItWorks';
 import Partners from '../components/landing/Partners';
-import Faq from '../components/landing/Faq';
+import FaqSection from '../components/landing/FaqSection';
 import NewsletterSignup from '../components/landing/NewsLetterSignup';
 import Footer from '../components/landing/Footer'
 
@@ -18,7 +18,7 @@ const LandingPage = () => {
       <HowItWorks />
       <Partners />
       <NewsletterSignup />
-      <Faq />
+      <FaqSection />
       <Footer />
     </>
   );
