@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header className="bg-white shadow-md">
+    <header className="bg-slate-200 shadow-md sticky top-0 z-50">
       <div className="container mx-auto flex justify-between items-center p-4">
         <div className="text-2xl font-bold text-purple-600">
           <Link to="/">FundMyFuture</Link>
@@ -24,11 +24,6 @@ const Header = () => {
               <a href="#faq" className="text-gray-600 hover:text-purple-600">
                 FAQ
               </a>
-            </li>
-            <li>
-              <Link to="/login" className="text-purple-600 hover:underline">
-                Login
-              </Link>
             </li>
             <li>
               <Link to="/signup/step-one" className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
