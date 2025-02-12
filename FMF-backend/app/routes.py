@@ -3,6 +3,7 @@
 from flask import Blueprint, request, jsonify
 from app import db
 from app.models import User, Application, Contribution
+from app.webhook import funding_predictor
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
 main_bp = Blueprint('auth', __name__)
@@ -108,3 +109,26 @@ def contribute(application_id):
     db.session.commit()
     
     return jsonify({"message": "Contribution successful"}), 201
+
+@main_bp.route('/dialogflow-webhook', methods=['POST'])
+def dialogflow_webhook():
+    req = request.get_json()
+    
+    # Extract intent name
+    intent_name = req.get("queryResult", {}).get("intent", {}).get("displayName")
+
+    # Obtain current user info
+    current_user = get_jwt_identity()
+    age = current_user['age']
+    gender = current_user['gender']
+    education = current_user['education']
+    income = current_user['income']
+
+    if intent_name == "recommend_finance":
+        recommendation = funding_predictor(age, gender, education, income, 1000) # Loan amount is defaulted to the lowest offered on the platform
+
+        response_text = "It is recommended that you apply for a scholarship. Here are some scholarship opportunities we offer" if recommendation == "Denied" else "The best option for you would be a loan application. Would you like guidance on how to do this?"
+        return jsonify({"fulfillmentText": response_text})
+    
+    if intent_name == "customer_support":
+        return "Customer Support"
