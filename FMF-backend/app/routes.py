@@ -3,7 +3,7 @@
 from flask import Blueprint, request, jsonify
 from app import db
 from app.models import User, Application, Contribution
-from app.webhook import funding_predictor, handle_user_guidance
+from app.webhook import funding_predictor, handle_user_guidance, handle_crowdfund_setup, handle_loan_application
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
 main_bp = Blueprint('auth', __name__)
@@ -162,7 +162,23 @@ def dialogflow_webhook():
             ]
 
         return jsonify({"fulfillmentText": response_text, "outputContexts" : outputContexts})
-    
+
+    if intent_name == "User Provides Campaign Details":
+        return handle_crowdfund_setup(req)
+
+    if intent_name == "Loan Set up":
+        return handle_loan_application(req)
+
     if intent_name == "user_guidance":
         response_text = handle_user_guidance(req.get("queryResult", {}).get("queryText", "").lower())
+        return jsonify({"fulfillmentText": response_text})
+
+    if intent_name == "Student-mentor":
+        # Search db for a mentor
+        response_text = "Here is a list of mentors who match your needs"
+        return jsonify({"fulfillmentText": response_text})
+
+    if intent_name == "Mentor-student":
+        # Search db for a mentor
+        response_text = "Here is a list of students who match you"
         return jsonify({"fulfillmentText": response_text})

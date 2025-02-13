@@ -1,6 +1,7 @@
 # This file handles the interactions with the chatbot and models
 import joblib
 import numpy as np
+from flask import jsonify
 
 def funding_predictor(age, gender, education, income, loan_amount):
     """
@@ -36,26 +37,26 @@ def funding_predictor(age, gender, education, income, loan_amount):
     return "Approved" if prediction[0] == 1 else "Denied"
 
 def handle_user_guidance(req):
-    if "signup" in req:
+    if any(sub in req for sub in ["signup", "create an account", "set up"]):
         return "You can sign up [here](https://example.com)"
 
     if "learning" in req:
         return "You can find learning resources [here](https://example.com)"
     
-    if "repayment" in req:
+    if any(sub in req for sub in ["repayment", "loan", "pay", "repay"]):
         return "You can make loan repayments [here](https://example.com)"
     
-    if any(sub in req for sub in ["settings", "account", "delete", "change settings"]):
+    if any(sub in req for sub in ["settings", " delete account", "delete", "change settings"]):
         return "You can access user settings [here](https://example.com)"
     
     if "scholarship" in req:
         return "You can find scholarships [here](https://example.com)"
     
-    if any(sub in req for sub in ["student is faring"]):
+    if any(sub in req for sub in ["student is faring", "student faring"]): # Get user example statements here
         return "You can see how your sponsored students are faring [here](https://example.com)"
 
 def handle_crowdfund_setup(req):
-    pass
+    return jsonify({"fulfillmentText": f"Your campaign is live! View it here: link"})
 
 def handle_loan_application(req):
-    pass
+    return jsonify({"fulfillmentText": f"Your application is completed! View it here: link"})
