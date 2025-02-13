@@ -3,7 +3,7 @@
 from flask import Blueprint, request, jsonify
 from app import db
 from app.models import User, Application, Contribution
-from app.webhook import funding_predictor
+from app.webhook import funding_predictor, handle_user_guidance
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
 main_bp = Blueprint('auth', __name__)
@@ -123,26 +123,46 @@ def dialogflow_webhook():
     gender = current_user['gender']
     education = current_user['education']
     income = current_user['income']
+    funding_gap = current_user['funding_gap']
 
     if intent_name == "recommend_finance":
-        recommendation = funding_predictor(age, gender, education, income, 1000) # Loan amount is defaulted to the lowest offered on the platform
+        recommendation = funding_predictor(age, gender, education, income, funding_gap) # Loan amount is defaulted to the lowest offered on the platform
 
         # If the model determines the student is not fit for a loan applications
         if recommendation == "Denied":
-            # Search the database for scholarships that match the student's needs
+            # Search the database for scholarships that match the student's needs and save them in scholarships array
+            # Use features like education level, area of study and funding gap for search
             scholarships = "Scholarships" # To be queried when a suitable model is created
 
             if scholarships == None:
                 # Enable the student to start a crowdfunding process
-                response_text = "The best option for you is to crowdfund. Would you like guidance on how to do this?"
+                response_text = "The best option for you is to crowdfund. Would you like the bot to help you with that or do you want to do it yourself?"
+                outputContexts = [
+                    {
+                        "name": "projects/YOUR_PROJECT_ID/agent/sessions/SESSION_ID/contexts/campaign-setup", # Put the correct details here on setup
+                        "lifespanCount": 5
+                    }
+                ]
             else:
                 response_text = "The best option for you is to apply for a scholarship. Here are some scholarships on our platform that match your needs." # To be converted to rich response
+                outputContexts = [
+                    {
+                        "name": "projects/YOUR_PROJECT_ID/agent/sessions/SESSION_ID/contexts/next-help", # Put the correct details here on setup
+                        "lifespanCount": 5
+                    }
+                ]
         else:
             # Allow the student to apply for a loan
             response_text = "The best option for you would be a loan application. Would you like guidance on how to do this?"
+            outputContexts = [
+                {
+                    "name": "projects/YOUR_PROJECT_ID/agent/sessions/SESSION_ID/contexts/loan-assistance", # Put the correct details here on setup
+                    "lifespanCount": 5
+                }
+            ]
 
-        return jsonify({"fulfillmentText": response_text})
+        return jsonify({"fulfillmentText": response_text, "outputContexts" : outputContexts})
     
-    if intent_name == "customer_support":
-        response_text = "Customer support"
+    if intent_name == "user_guidance":
+        response_text = handle_user_guidance(req.get("queryResult", {}).get("queryText", "").lower())
         return jsonify({"fulfillmentText": response_text})
