@@ -127,8 +127,22 @@ def dialogflow_webhook():
     if intent_name == "recommend_finance":
         recommendation = funding_predictor(age, gender, education, income, 1000) # Loan amount is defaulted to the lowest offered on the platform
 
-        response_text = "It is recommended that you apply for a scholarship. Here are some scholarship opportunities we offer" if recommendation == "Denied" else "The best option for you would be a loan application. Would you like guidance on how to do this?"
+        # If the model determines the student is not fit for a loan applications
+        if recommendation == "Denied":
+            # Search the database for scholarships that match the student's needs
+            scholarships = "Scholarships" # To be queried when a suitable model is created
+
+            if scholarships == None:
+                # Enable the student to start a crowdfunding process
+                response_text = "The best option for you is to crowdfund. Would you like guidance on how to do this?"
+            else:
+                response_text = "The best option for you is to apply for a scholarship. Here are some scholarships on our platform that match your needs." # To be converted to rich response
+        else:
+            # Allow the student to apply for a loan
+            response_text = "The best option for you would be a loan application. Would you like guidance on how to do this?"
+
         return jsonify({"fulfillmentText": response_text})
     
     if intent_name == "customer_support":
-        return "Customer Support"
+        response_text = "Customer support"
+        return jsonify({"fulfillmentText": response_text})
